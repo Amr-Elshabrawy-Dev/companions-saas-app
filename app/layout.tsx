@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Bricolage_Grotesque } from "next/font/google";
+import localFont from "next/font/local";
 import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
-const bricolage = Bricolage_Grotesque({
+const bricolage = localFont({
+  src: "../public/fonts/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf",
   variable: "--font-bricolage",
-  subsets: ["latin"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
