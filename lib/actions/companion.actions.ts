@@ -44,3 +44,28 @@ export const getAllCompanions = async ({
 
   return companions;
 };
+
+export const getCompanion = async (id: string) => {
+  const supabase = createSupabaseClient();
+  const { data, error } = await supabase
+    .from("companions")
+    .select()
+    .eq("id", id);
+
+  if (error || !data) throw new Error(error?.message || "Companion not found");
+
+  return data[0];
+};
+
+export const addToSessionHistory = async (companionId: string) => {
+  const { userId } = await auth();
+  const supabase = createSupabaseClient();
+  const { data, error } = await supabase.from("session_history").insert({
+    companion_id: companionId,
+    user_id: userId,
+  });
+
+  if (error) throw new Error(error.message);
+
+  return data;
+};
