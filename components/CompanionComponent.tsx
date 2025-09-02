@@ -172,7 +172,7 @@ const CompanionComponent = ({
               callStatus === CallStatus.CONNECTING && "animate-pulse"
             )}
             onClick={
-              callStatus === CallStatus.INACTIVE ? handleDisconnect : handleCall
+              callStatus === CallStatus.ACTIVE ? handleDisconnect : handleCall
             }
           >
             {callStatus === CallStatus.ACTIVE
@@ -210,55 +210,3 @@ const CompanionComponent = ({
   );
 };
 export default CompanionComponent;
-
-
-// const Companions = [
-//   {
-//     name: "Algebra Alex",
-//     subject: "maths",
-//     topic: "Explains algebra step by step with real-world examples",
-//     style: "casual",
-//     voice: "male",
-//     duration: 15,
-//   },
-//   {
-//     name: "Historian Sophia",
-//     subject: "history",
-//     topic: "Discusses ancient civilizations in an engaging storytelling way",
-//     style: "formal",
-//     voice: "female",
-//     duration: 20,
-//   },
-//   {
-//     name: "Code Coach Liam",
-//     subject: "coding",
-//     topic: "Teaches JavaScript basics with interactive exercises",
-//     style: "casual",
-//     voice: "male",
-//     duration: 10,
-//   },
-//   {
-//     name: "Science Emma",
-//     subject: "science",
-//     topic: "Explains physics concepts with simple experiments",
-//     style: "casual",
-//     voice: "female",
-//     duration: 25,
-//   },
-//   {
-//     name: "Economist Noah",
-//     subject: "economics",
-//     topic: "Breaks down supply and demand using real-life case studies",
-//     style: "formal",
-//     voice: "male",
-//     duration: 30,
-//   },
-//   {
-//     name: "Linguist Olivia",
-//     subject: "language",
-//     topic: "Helps practice conversational English with role-play",
-//     style: "casual",
-//     voice: "female",
-//     duration: 12,
-//   },
-// ];
