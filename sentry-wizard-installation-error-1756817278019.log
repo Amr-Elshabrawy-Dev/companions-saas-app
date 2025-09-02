@@ -1,0 +1,74 @@
+npm warn cleanup Failed to remove some directories [
+npm warn cleanup   [
+npm warn cleanup     'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\vercel-edge',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\vercel-edge\build\types-ts3.8'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\vercel-edge\\build\\types-ts3.8'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\node-core',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\node-core\node_modules\@sentry\core\build\types-ts3.8'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\node-core\\node_modules\\@sentry\\core\\build\\types-ts3.8'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@prisma\\instrumentation',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@prisma\instrumentation\node_modules\@opentelemetry'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@prisma\\instrumentation\\node_modules\\@opentelemetry'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\nextjs\\node_modules',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\nextjs\node_modules\@sentry-internal\browser-utils'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\nextjs\\node_modules\\@sentry-internal\\browser-utils'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\react',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\react\node_modules\@sentry\browser'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\react\\node_modules\\@sentry\\browser'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\react',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\react\node_modules\@sentry\browser'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\react\\node_modules\\@sentry\\browser'
+npm warn cleanup     }
+npm warn cleanup   ],
+npm warn cleanup   [
+npm warn cleanup     '\\\\?\\D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\nextjs',
+npm warn cleanup     [Error: EPERM: operation not permitted, rmdir 'D:\Repos\SaaS App\amr-saas-app\node_modules\@sentry\nextjs\node_modules'] {
+npm warn cleanup       errno: -4048,
+npm warn cleanup       code: 'EPERM',
+npm warn cleanup       syscall: 'rmdir',
+npm warn cleanup       path: 'D:\\Repos\\SaaS App\\amr-saas-app\\node_modules\\@sentry\\nextjs\\node_modules'
+npm warn cleanup     }
+npm warn cleanup   ]
+npm warn cleanup ]
+npm error code ETIMEDOUT
+npm error errno ETIMEDOUT
+npm error network request to https://registry.npmjs.org/@sentry/nextjs/-/nextjs-10.8.0.tgz failed, reason: 
+npm error network This is a problem related to network connectivity.
+npm error network In most cases you are behind a proxy or have bad network settings.
+npm error network
+npm error network If you are behind a proxy, please make sure that the
+npm error network 'proxy' config is set properly.  See: 'npm help config'
+npm error A complete log of this run can be found in: C:\Users\DELL\AppData\Local\npm-cache\_logs\2025-09-02T12_44_36_906Z-debug-0.log
