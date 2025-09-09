@@ -2,18 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { removeBookmark } from "@/lib/actions/companion.actions";
-import { addBookmark } from "@/lib/actions/companion.actions";
+import { addBookmark, removeBookmark } from "@/lib/actions/companion.actions";
 import { usePathname } from "next/navigation";
+import { useState } from "react";
+import { CompanionWithBookmark } from "@/types/companions";
 
-interface CompanionCardProps {
-  id: string;
-  name: string;
-  topic: string;
-  subject: string;
-  duration: number;
+interface CompanionCardProps extends CompanionWithBookmark {
   color: string;
-  bookmarked: boolean;
 }
 
 const CompanionCard = ({
@@ -26,11 +21,15 @@ const CompanionCard = ({
   bookmarked,
 }: CompanionCardProps) => {
   const pathname = usePathname();
+  const [isBookmarked, setIsBookmarked] = useState(bookmarked);
+
   const handleBookmark = async () => {
-    if (bookmarked) {
+    if (isBookmarked) {
       await removeBookmark(id, pathname);
+      setIsBookmarked(false);
     } else {
       await addBookmark(id, pathname);
+      setIsBookmarked(true);
     }
   };
   return (
@@ -45,7 +44,9 @@ const CompanionCard = ({
         >
           <Image
             src={
-              bookmarked ? "/icons/bookmark-filled.svg" : "/icons/bookmark.svg"
+              isBookmarked
+                ? "/icons/bookmark-filled.svg"
+                : "/icons/bookmark.svg"
             }
             alt="bookmark"
             width={12.5}

@@ -6,10 +6,17 @@ import {
   getRecentSessions,
 } from "@/lib/actions/companion.actions";
 import { getSubjectColor } from "@/lib/utils";
+import { getBookmarkedCompanions } from "@/lib/actions/companion.actions";
+import { currentUser } from "@clerk/nextjs/server";
+import { redirect } from "next/navigation";
 
 const Page = async () => {
+  const user = await currentUser();
+  if (!user) redirect("/sign-in");
   const companions = await getAllCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
+  const bookmarkedCompanions = user ? await getBookmarkedCompanions(user.id) : [];
+  const bookmarkedCompanionIds = new Set(bookmarkedCompanions.map(c => c.id));
 
   return (
     <main>
@@ -20,6 +27,7 @@ const Page = async () => {
             key={companion.id}
             {...companion}
             color={getSubjectColor(companion.subject)}
+            bookmarked={bookmarkedCompanionIds.has(companion.id)}
           />
         ))}
       </section>
