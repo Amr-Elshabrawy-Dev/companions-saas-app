@@ -6,15 +6,17 @@ Converso is an innovative real-time AI teaching platform that connects learners 
 
 ## ✨ Features
 
-- 🤖 **AI Companions**: Interactive AI tutors for different subjects (Math, Science, History, etc.)
-- 🎯 **Personalized Learning**: Tailored lessons based on user preferences and progress
-- 📹 **Real-time Sessions**: Voice and video-powered teaching experiences using Vapi AI
-- 🔖 **Bookmark System**: Save favorite companions for quick access
-- 📊 **Session Tracking**: Monitor recent completed lessons and progress
-- 🎨 **Modern UI**: Beautiful, responsive design with Tailwind CSS
-- 🔐 **Secure Authentication**: Seamless user management with Clerk
-- ☁️ **Cloud Database**: Powered by Supabase for reliable data storage
-- 🚨 **Error Monitoring**: Sentry integration for smooth performance tracking
+- 🤖 **AI Companions**: Interactive AI tutors for different subjects (Math, Science, History, etc.).
+- 🎯 **Personalized Learning**: Tailored lessons based on user preferences and progress.
+- 📹 **Real-time Sessions**: Voice and video-powered teaching experiences using Vapi AI.
+- 🔖 **Bookmark System**: Save favorite companions for quick access.
+- 📊 **Session Tracking**: Monitor recent completed lessons and progress.
+- 🎨 **Modern UI**: Beautiful, responsive design with Tailwind CSS.
+- 🔐 **Secure Authentication**: Seamless user management with Clerk.
+- ☁️ **Cloud Database**: Powered by Supabase for reliable data storage.
+- 🚨 **Error Monitoring**: Sentry integration for smooth performance tracking.
+- 📝 **Custom Companions**: Users can create their own AI companions with custom subjects, topics, voices, and styles.
+- 🔍 **Search and Filter**: Easily find companions by subject or topic.
 
 ## 🛠️ Tech Stack
 
@@ -30,6 +32,26 @@ Converso is an innovative real-time AI teaching platform that connects learners 
 - **Icons**: Lucide React for beautiful, consistent iconography
 - **TypeScript**: Full type safety throughout the application
 
+## 📂 Project Structure
+
+```txt
+amr-saas-app/
+├── app/                     # Next.js App Router pages and API routes
+│   ├── api/                 # API routes
+│   ├── companions/          # Companion-related pages
+│   └── ...
+├── components/              # Reusable React components
+│   ├── ui/                  # UI components (buttons, forms, etc.)
+│   └── ...
+├── constants/               # Constant values and configurations
+├── lib/                     # Library functions and utilities
+│   ├── actions/             # Server-side actions
+│   └── ...
+├── public/                  # Static assets (images, fonts, etc.)
+├── types/                   # TypeScript type definitions
+└── ...                      # Configuration files
+```
+
 ## 📥 Installation & Usage
 
 ### Prerequisites
@@ -42,7 +64,7 @@ Converso is an innovative real-time AI teaching platform that connects learners 
 1. **Clone the repository**
 
    ```bash
-   git clone https://github.com/Amr-Elshabrawy-Dev/saas-app.git
+   git clone https://github.com/Amr-Elshabrawy-Dev/companions-saas-app.git
    cd saas-app
    ```
 
