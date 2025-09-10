@@ -19,14 +19,28 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { subjects } from "@/constants";
+
 import { Textarea } from "./ui/textarea";
 import { createCompanion } from "@/lib/actions/companion.actions";
 import { redirect } from "next/navigation";
+import { Subject } from "@/types/companions";
 
 const formSchema = z.object({
   name: z.string().min(1, { message: "Companion is required" }),
-  subject: z.string().min(1, { message: "Subject is required" }),
+  subject: z.enum(
+    [
+      "maths",
+      "language",
+      "science",
+      "history",
+      "coding",
+      "geography",
+      "economics",
+      "finance",
+      "business",
+    ],
+    { message: "Subject is required" }
+  ),
   topic: z.string().min(1, { message: "Topic is required" }),
   voice: z.string().min(1, { message: "Voice is required" }),
   style: z.string().min(1, { message: "Style is required" }),
@@ -42,7 +56,7 @@ const CompanionForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      subject: "",
+      subject: Subject.maths, // Default to a valid Subject enum value
       topic: "",
       voice: "",
       style: "",
@@ -51,8 +65,11 @@ const CompanionForm = () => {
   });
 
   const onSubmit = async (values: FormValues) => {
-    const companion = await createCompanion(values);
-    
+    const companion = await createCompanion({
+      ...values,
+      subject: values.subject as Subject,
+    });
+
     if (companion) {
       redirect(`/companions/${companion.id}`);
     } else {
@@ -97,13 +114,13 @@ const CompanionForm = () => {
                     <SelectValue placeholder="Select The Subject" />
                   </SelectTrigger>
                   <SelectContent>
-                    {subjects.map((subject) => (
+                    {Object.values(Subject).map((subject) => (
                       <SelectItem
-                        key={subject}
-                        value={subject}
+                        key={subject as string}
+                        value={subject as string}
                         className="capitalize"
                       >
-                        {subject}
+                        {subject as string}
                       </SelectItem>
                     ))}
                   </SelectContent>

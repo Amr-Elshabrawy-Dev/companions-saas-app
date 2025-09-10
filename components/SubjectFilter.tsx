@@ -7,17 +7,20 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { subjects } from "@/constants";
 import { useRouter } from "next/navigation";
 import { useSearchParams } from "next/navigation";
+import { subjects } from "@/constants";
 import { formUrlQuery, removeKeysFromUrlQuery } from "@jsmastery/utils";
+import { Subject } from "@/types/companions";
 
 const SubjectFilter = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const query = searchParams.get("subject") || "";
 
-  const [subject, setSubject] = useState(query);
+  const [subject, setSubject] = useState<Subject | "all">(
+    query as Subject | "all"
+  );
 
   useEffect(() => {
     let newUrl = "";
@@ -37,7 +40,10 @@ const SubjectFilter = () => {
   }, [subject, searchParams, router]);
 
   return (
-    <Select onValueChange={setSubject} value={subject}>
+    <Select
+      onValueChange={(value) => setSubject(value as Subject | "all")}
+      value={subject}
+    >
       <SelectTrigger className="input capitalize">
         <SelectValue placeholder="Subject" />
       </SelectTrigger>
