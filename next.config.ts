@@ -2,15 +2,15 @@ import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   images: {
     remotePatterns: [{ hostname: "img.clerk.com" }],
   },
+  // Enable strict mode for better error detection
+  reactStrictMode: true,
+  // Enable static optimization where possible
+  swcMinify: true,
+  // Configure powered by header
+  poweredByHeader: false,
 };
 
 export default withSentryConfig(nextConfig, {
