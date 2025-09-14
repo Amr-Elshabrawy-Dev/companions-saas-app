@@ -18,6 +18,17 @@ Converso is an innovative real-time AI teaching platform that connects learners 
 - 📝 **Custom Companions**: Users can create their own AI companions with custom subjects, topics, voices, and styles.
 - 🔍 **Search and Filter**: Easily find companions by subject or topic.
 
+## 📺 Live Preview
+
+<div align="center">
+  <a href="https://companions-saas-app-i7sx.vercel.app/" target="_blank" rel="noopener noreferrer">
+    <img src="./public/readme/hero.png" alt="Converso Live Preview" width="800"/>
+  </a>
+  <p>
+    <a href="https://companions-saas-app-i7sx.vercel.app/" target="_blank" rel="noopener noreferrer">View Live Demo</a>
+  </p>
+</div>
+
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 15.5.0](https://nextjs.org/) - React-based full-stack framework
