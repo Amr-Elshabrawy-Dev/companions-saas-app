@@ -11,16 +11,15 @@ import { Companion, SearchParams, Subject } from "@/types/companions";
 
 const CompanionsLibrary = async ({ searchParams }: SearchParams) => {
   try {
-    const filters = await searchParams;
-    const subjectFilter = Array.isArray(filters.subject)
-      ? filters.subject[0]
-      : filters.subject;
+    const subjectFilter = Array.isArray(searchParams.subject)
+      ? searchParams.subject[0]
+      : searchParams.subject;
     const subject = Object.values(Subject).includes(subjectFilter as Subject)
       ? (subjectFilter as Subject)
       : undefined;
-    const topic = Array.isArray(filters.topic)
-      ? filters.topic[0]
-      : filters.topic || "";
+    const topic = Array.isArray(searchParams.topic)
+      ? searchParams.topic[0]
+      : searchParams.topic || "";
 
     const [companionList, user] = await Promise.all([
       getAllCompanions({ subject, topic }),
