@@ -54,8 +54,12 @@ const CompanionCard = ({
           />
         </button>
       </div>
-      <h2 className="text-2xl font-bold">{name}</h2>
-      <p className="text-sm">{topic}</p>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-2xl font-bold">{name}</h2>
+        <p className="text-sm whitespace-nowrap overflow-x-hidden text-ellipsis min-lg:max-w-[250]" title={topic}>
+          {topic}
+        </p>
+      </div>
       <div className="flex items-center gap-2">
         <Image
           src="/icons/clock.svg"

@@ -98,7 +98,7 @@ const CompanionComponent = ({
 
   return (
     <section className="flex flex-col h-[70dvh]">
-      <section className="flex gap-8 max-sm:flex-col">
+      <section className="flex items-start gap-8 max-sm:flex-col">
         <div className="companion-section">
           <div
             className="companion-avatar"
@@ -118,9 +118,9 @@ const CompanionComponent = ({
               <Image
                 src={`/icons/${subject}.svg`}
                 alt={subject}
-                width={150}
-                height={150}
-                className="max-sm:w-fit"
+                width={120}
+                height={120}
+                className="max-sm:w-[50px] max-sm:h-[50px]"
               />
             </div>
             <div
@@ -144,8 +144,8 @@ const CompanionComponent = ({
             <Image
               src={userImage}
               alt={userName}
-              width={130}
-              height={130}
+              width={70}
+              height={70}
               className="rounded-lg"
             />
             <p className="text-2xl font-bold">{userName}</p>
@@ -158,8 +158,8 @@ const CompanionComponent = ({
             <Image
               src={isMuted ? "/icons/mic-off.svg" : "/icons/mic-on.svg"}
               alt={isMuted ? "Unmute" : "Mute"}
-              width={36}
-              height={36}
+              width={25}
+              height={25}
             />
             <p className="max-sm:hidden">
               {isMuted ? "turn on microphone" : "turn off microphone"}
@@ -185,17 +185,18 @@ const CompanionComponent = ({
       </section>
       <section className="transcript">
         <div className="transcript-message no-scrollbar">
-          {messages.map((message) => {
+          {messages.map((message, index) => {
+            const messageKey = `${message.role}-${index}-${message.content.slice(0, 20)}`;
             if (message.role === "assistant") {
               return (
-                <p key={message.content} className="max-sm:text-sm">
-                  {name.split(" ")[0].replace("/[.,]/g", "")}: {message.content}
+                <p key={messageKey} className="max-sm:text-sm">
+                  {name.split(" ")[0].replace(/[.,]/g, "")}: {message.content}
                 </p>
               );
             } else {
               return (
                 <p
-                  key={message.content}
+                  key={messageKey}
                   className="text-primary max-sm:text-sm"
                 >
                   {userName}: {message.content}

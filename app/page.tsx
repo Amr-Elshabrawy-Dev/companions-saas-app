@@ -8,17 +8,18 @@ import {
 import { getSubjectColor } from "@/lib/utils";
 import { getBookmarkedCompanions } from "@/lib/actions/companion.actions";
 import { currentUser } from "@clerk/nextjs/server";
-import { redirect } from "next/navigation";
+// import { redirect } from "next/navigation";
 
 const Page = async () => {
   const user = await currentUser();
-  if (!user) redirect("/sign-in");
   const companions = await getAllCompanions({ limit: 3 });
   const recentSessionsCompanions = await getRecentSessions(10);
-  const bookmarkedCompanions = user ? await getBookmarkedCompanions(user.id) : [];
-  const bookmarkedCompanionIds = new Set(bookmarkedCompanions.map(c => c.id));
+  const bookmarkedCompanions = user
+    ? await getBookmarkedCompanions(user.id)
+    : [];
+  const bookmarkedCompanionIds = new Set(bookmarkedCompanions.map((c) => c.id));
 
-  return (
+  return user ? (
     <main>
       <h1 className="text-2xl">Popular Companions</h1>
       <section className="home-section">
@@ -31,6 +32,17 @@ const Page = async () => {
           />
         ))}
       </section>
+      <section className="home-section">
+        <CompanionsList
+          title="Recently completed sessions"
+          companions={recentSessionsCompanions}
+          classNames="w-2/3 max-lg:w-full"
+        />
+        <CTA />
+      </section>
+    </main>
+  ) : (
+    <main>
       <section className="home-section">
         <CompanionsList
           title="Recently completed sessions"
