@@ -7,17 +7,21 @@ import {
   getAllCompanions,
   getBookmarkedCompanions,
 } from "@/lib/actions/companion.actions";
-import { useUser } from "@clerk/nextjs"; // Use useUser for client components
+import { useUser, SignInButton } from "@clerk/nextjs"; // Use useUser for client components
 import { getSubjectColor } from "@/lib/utils";
 import { Companion, Subject } from "@/types/companions";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useAuth } from "@clerk/nextjs";
 
 const CompanionsClientPage = () => {
   const searchParams = useSearchParams();
   const { user } = useUser();
+  const { userId } = useAuth();
   const [companionList, setCompanionList] = useState<Companion[]>([]);
-  const [bookmarkedCompanionIds, setBookmarkedCompanionIds] = useState<Set<string>>(new Set());
+  const [bookmarkedCompanionIds, setBookmarkedCompanionIds] = useState<
+    Set<string>
+  >(new Set());
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -27,7 +31,9 @@ const CompanionsClientPage = () => {
       setError(null);
       try {
         const subjectFilter = searchParams.get("subject");
-        const subject = Object.values(Subject).includes(subjectFilter as Subject)
+        const subject = Object.values(Subject).includes(
+          subjectFilter as Subject
+        )
           ? (subjectFilter as Subject)
           : undefined;
         const topic = searchParams.get("topic") || "";
@@ -37,11 +43,15 @@ const CompanionsClientPage = () => {
 
         if (user) {
           const bookmarked = await getBookmarkedCompanions(user.id);
-          setBookmarkedCompanionIds(new Set(bookmarked.map((c: Companion) => c.id)));
+          setBookmarkedCompanionIds(
+            new Set(bookmarked.map((c: Companion) => c.id))
+          );
         }
       } catch (err) {
         console.error("Error in CompanionsClientPage:", err);
-        setError("An error occurred while loading companions. Please try again later.");
+        setError(
+          "An error occurred while loading companions. Please try again later."
+        );
       } finally {
         setLoading(false);
       }
@@ -49,6 +59,46 @@ const CompanionsClientPage = () => {
 
     fetchData();
   }, [searchParams, user]);
+
+  // Clear client-side state when user logs out
+  useEffect(() => {
+    if (!userId) {
+      // User has logged out, clear all client-side state
+      setCompanionList([]);
+      setBookmarkedCompanionIds(new Set());
+      setError(null);
+      setLoading(false);
+    }
+  }, [userId]);
+
+  // Show authentication prompt for logged-out users
+  if (!userId) {
+    return (
+      <main>
+        <section className="flex justify-between gap-4 max-sm:flex-col">
+          <h1>Companion Library</h1>
+          <div className="flex gap-4">
+            <SearchInput />
+            <SubjectFilter />
+          </div>
+        </section>
+        <div className="mt-8 text-center">
+          <div className="max-w-md mx-auto flex flex-col items-center">
+            <h2 className="text-2xl font-bold mb-4">
+              Sign In to Access Companions
+            </h2>
+            <p className="text-gray-600 mb-6">
+              Please sign in to view and interact with our AI companions
+              library.
+            </p>
+            <SignInButton>
+              <button className="btn-signin">Sign In to Continue</button>
+            </SignInButton>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   if (loading) {
     return (

@@ -34,25 +34,25 @@ const CompanionsList = ({
           </TableRow>
         </TableHeader>
         <TableBody>
-          {companions?.map(({ id, subject, name, topic, duration }) => (
-            <TableRow key={id}>
+          {companions?.map(({ id, subject, name, topic, duration }, idx) => (
+            <TableRow key={idx}>
               <TableCell className="font-medium">
                 <Link href={`/companions/${id}`}>
                   <div className="flex items-center gap-2">
                     <div
-                      className="size-[72px] flex items-center justify-center rounded-lg max-md:hidden"
+                      className="size-[64px] flex items-center justify-center rounded-lg max-md:hidden"
                       style={{ backgroundColor: getSubjectColor(subject) }}
                     >
                       <Image
                         src={`/icons/${subject}.svg`}
                         alt={subject}
-                        width={35}
-                        height={35}
+                        width={30}
+                        height={30}
                       />
                     </div>
                     <div className="flex flex-col gap-2">
-                      <p className="font-bold text-2xl">{name}</p>
-                      <p className="text-lg">{topic}</p>
+                      <p className="font-bold text-lg">{name}</p>
+                      <p>{topic}</p>
                     </div>
                   </div>
                 </Link>
@@ -75,7 +75,7 @@ const CompanionsList = ({
               </TableCell>
               <TableCell>
                 <div className="flex items-center justify-end gap-2 w-full">
-                  <p className="text-2xl">
+                  <p className="text-lg">
                     {duration} <span className="max-md:hidden">mins</span>
                   </p>
                   <Image
