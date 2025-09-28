@@ -111,7 +111,13 @@ const CompanionsClientPage = () => {
           </div>
         </section>
         <div className="mt-8 text-center">
-          <p>Loading companions...</p>
+          <div className="flex flex-col items-center gap-4">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+            <p>Loading companions...</p>
+            <p className="text-sm text-gray-500">
+              This should only take a few seconds
+            </p>
+          </div>
         </div>
       </main>
     );
