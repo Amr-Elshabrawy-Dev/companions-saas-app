@@ -13,6 +13,8 @@ import { Companion, Subject } from "@/types/companions";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@clerk/nextjs";
+import Image from "next/image";
+import Link from "next/link";
 
 const CompanionsClientPage = () => {
   const searchParams = useSearchParams();
@@ -43,6 +45,10 @@ const CompanionsClientPage = () => {
 
         if (user) {
           const bookmarked = await getBookmarkedCompanions(user.id);
+          console.log(
+            "🚀 ~ fetchData ~ bookmarked:",
+            new Set(bookmarked.map((c: Companion) => c.id))
+          );
           setBookmarkedCompanionIds(
             new Set(bookmarked.map((c: Companion) => c.id))
           );
@@ -152,6 +158,12 @@ const CompanionsClientPage = () => {
       {companionList.length === 0 ? (
         <div className="mt-8 text-center">
           <p>No companions found matching your criteria.</p>
+          <button className="btn-primary">
+            <Image src="/icons/plus.svg" alt="plus" width={12} height={12} />
+            <Link href="/companions/new">
+              <p>Build a New Companion</p>
+            </Link>
+          </button>
         </div>
       ) : (
         <section className="companions-grid">
